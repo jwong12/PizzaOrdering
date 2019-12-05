@@ -1,0 +1,27 @@
+{
+    "sizes": {
+        "large" : {
+            "description": "Large (14\")",
+            "price": 15.99
+        },
+        "medium" : {
+            "description": "Medium (12\")",
+            "price": 12.99
+        },
+        "small" : {
+            "description": "Small (10\")",
+            "price": 9.99
+        },
+        "personal" : {
+            "description": "Personal (6\")",
+            "price": 6.99
+        }
+    },
+    "crustTypes": [
+        { "name": "ORIGINAL HAND TOSSED", "description": "The traditional, hand-engineered crust that started it all."},
+        { "name": "CRUNCHY THIN CRUST", "description": "Thin and crispy, seasoned with oregano and cut in squares, Chicago style."},
+        { "name": "HOMESTYLE CRUST", "description": "Homestyle crust with our famous tomato homemade sauce and mozzarella."}
+    ],
+    "toppingTypes" : ["Pepperoni", "Bacon", "Ham", "Grilled Chicken Breast", "Italian Sausage", "Beef", "Maple Bacon", "Smoked Age Cheddar", "Mushroom", "Green Pepper", "Pineapple", "Red Onions", "Roasted Red Peppers", "Tomatoes", "Black Olives", "Parmessan", "Feta Cheese"],
+    "toppingPriceAfterFirstTwo" : 1.5
+}

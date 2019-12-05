@@ -1,0 +1,61 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+
+{{!-- <form method="post" action="/details" id="#submitForm">
+    <h2>Pizza Order</h2>            
+    <h3>Choose your size:</h3>
+    <input type="radio" name="size" value="large" id="large" checked="checked"><label for="large">{{large}} - {{largePrice}}</label>
+    <input type="radio" name="size" value="medium" id="medium"><label for="medium">{{medium}} - {{mediumPrice}}</label>
+    <input type="radio" name="size" value="small" id="small"><label for="small">{{small}} - {{smallPrice}}</label>
+    <input type="radio" name="size" value="personal" id="personal"><label for="personal">{{personal}} - {{personalPrice}}</label>
+
+    <h3>Choose your crust:</h3>
+    {{#listCrusts crustTypes}}{{name}} &#127829; {{description}}<br>{{/listCrusts}}
+
+    <h3>Choose your toppings:</h3>
+    <ul class="toppings_list">
+        {{#each toppingTypes}}
+            <div class="topping">
+                <input type="checkbox" name="toppings" class="checkboxes" id={{#kebabCase this}}{{/kebabCase}} value={{#removeSpaces this}}{{/removeSpaces}}>
+                <label for={{#kebabCase this}}{{/kebabCase}}>{{this}}</label>
+            </div>
+        {{/each}}
+    </ul>
+    <small>* First 2 toppings are free. Extra toppings are ${{toppingPrice}} each.</small><br/><br/>
+    <label id="labelQty">Quantity: </label>
+    <select name="quantity" id="dropDownQty">
+        <option value="one">1</option>
+        <option value="two">2</option>
+        <option value="three">3</option>
+        <option value="four">4</option>
+        <option value="five">5</option>
+    </select><br/>
+    <h3>Customer Information</h3>
+    <table>                
+        <tr>
+            <td><label for="name">Name:</label></td>
+            <td><input type="text" id="name" name="name" required minlength="2"></td>
+        </tr>
+        
+        <tr>
+            <td><label for="phone">Phone number:</label></td>
+            <td><input type="text" id="phone" name="phone" placeholder="604-123-0000" required minlength="10" maxlength="12"></td>
+        </tr>
+        <tr>
+            <td><label for="address">Address:</label></td>
+            <td><input type="text" id="address" name="address" placeholder="111-100 Main St" required></td>
+        </tr>
+        <tr>
+            <td><label for="city">City:</label></td>
+            <td><input type="text" id="city" name="city" required></td>
+        </tr>
+        <tr>
+            <td><label for="postal">Postal code:</label></td>
+            <td><input type="text" id="postal" name="postal" placeholder="V5H 2L4" required minlength="6" maxlength="7"></td>
+        </tr>
+        <tr>
+            <td></td><td><button>Order</button></td>
+        </tr>
+    </table>
+</form> --}}
+   

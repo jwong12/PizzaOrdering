@@ -1,0 +1,52 @@
+/* body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+} */
+
+body{
+  font-family: Arial,Helvetica,sans-serif;
+  margin: 0;
+  background-color: lightgrey;
+}
+
+#main-content {
+  background-color: #FFFFFF;
+  min-width: 725px;
+  max-width: 850px;
+  min-height: 900px;
+  margin: auto;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  padding: 15px 10px 10px 10px;
+}
+
+#nav {
+  color: #FFFFFF;
+  background-color: #236786;
+}
+
+#navbar{
+  display:block;
+  padding: 7px;
+  text-align: center;
+}
+
+.navlink:link {
+  text-decoration: none;
+  color: rgb(241, 95, 28);
+  padding: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.navlink:visited {
+  text-decoration: none;
+  color: rgb(241, 95, 28);
+}
+
+.navlink:hover {
+  color: rgb(230, 168, 0);
+}
