@@ -17,5 +17,17 @@ npm i express-generator
 ```
 npm i mongoose
 ```
- 
+
+### Express-handlebars
+
+```
+npm i express-handlebars
+```
+
+### Lodash
+
+```
+npm i lodash
+```
+
  

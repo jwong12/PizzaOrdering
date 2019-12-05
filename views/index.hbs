@@ -1,7 +1,7 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<link rel="stylesheet" href="stylesheets/order.css">
+<script src="javascripts/index.js" defer></script>
 
-{{!-- <form method="post" action="/details" id="#submitForm">
+<form method="post" id="submitForm">
     <h2>Pizza Order</h2>            
     <h3>Choose your size:</h3>
     <input type="radio" name="size" value="large" id="large" checked="checked"><label for="large">{{large}} - {{largePrice}}</label>
@@ -24,11 +24,11 @@
     <small>* First 2 toppings are free. Extra toppings are ${{toppingPrice}} each.</small><br/><br/>
     <label id="labelQty">Quantity: </label>
     <select name="quantity" id="dropDownQty">
-        <option value="one">1</option>
-        <option value="two">2</option>
-        <option value="three">3</option>
-        <option value="four">4</option>
-        <option value="five">5</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
     </select><br/>
     <h3>Customer Information</h3>
     <table>                
@@ -54,8 +54,7 @@
             <td><input type="text" id="postal" name="postal" placeholder="V5H 2L4" required minlength="6" maxlength="7"></td>
         </tr>
         <tr>
-            <td></td><td><button>Order</button></td>
+            <td></td><td><button type="submit">Order</button></td>
         </tr>
     </table>
-</form> --}}
-   
+</form>

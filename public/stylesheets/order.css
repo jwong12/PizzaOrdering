@@ -1,0 +1,65 @@
+h2 {
+    margin: 0;
+}
+
+h3 {
+    margin: 20px 0 10px 0;
+}
+
+form {
+    padding: 15px 15px 15px 20px;
+}
+
+#medium, #small, #personal {
+    margin: 0 0 0 20px;
+}
+
+.crust {
+    margin: 10px 5px;
+}
+
+.toppings_list {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0px;
+}
+
+.topping {
+    width: 190px;
+    margin: 5px;
+}
+
+.checkboxes {
+    margin: 0;
+}
+
+label {
+    font-size: 14px;
+    padding: 5px;
+}
+
+table {
+    border-spacing: 1px;
+}
+
+td input {
+    width: 260px;
+}
+
+#labelQty {
+    font-weight: bold;
+    font-size: 18.72px;
+    padding: 0;
+    margin-right: 24px;
+}
+
+#dropDownQty {
+    width: 70px;
+}
+
+button {
+    float: right;
+    margin-top: 10px;
+    width: 75px;
+    height: 28px;
+}
