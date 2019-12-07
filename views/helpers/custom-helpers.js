@@ -14,6 +14,7 @@ module.exports = {
                 out += `<input type="radio" name="crust" class="crust" value=${value} id=${value}><label for=${value}>${options.fn(items[i])}</label>`
             }
         }
+
         return out;
     },
     kebabCase: (str) => _.kebabCase(str),
@@ -21,7 +22,7 @@ module.exports = {
     capitalizeSingle: (str) => _.capitalize(str),
     capitalize: (str) => {
         let concat = '';
-        str.split(' ').forEach(x => concat += _.capitalize(x) + ' ');
+        str.split(' ').forEach(x => concat += _.capitalize(x) + ' ');        
         return _.trim(_.replace(concat, 'Crust', ''));
     }
 };

@@ -1,6 +1,6 @@
 # Pizza Ordering APIs
 
-A website that let users create pizza orders and uses these orders through Web APIs.
+A website that let users create pizza orders and retrieve the order history through REST APIs.
 
 ## Installation
 

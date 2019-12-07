@@ -1,7 +1,7 @@
 $(function ready() {    
     $.getJSON("/api/orders", function(data) {
         $("#orders").empty();
-        $("#orders").append("<tr><th>Order Id</th><th>Customer Name</th><th>Phone Number</th><th>Address</th><th>Pizza Details</th></tr>");
+        $("#orders").append("<tr><th>Order Id</th><th>Customer Name</th><th>Phone Number</th><th id='th-address'>Address</th><th id='th-pizza'>Pizza Details</th></tr>");
 
         data.forEach(function (item) {
             $("#orders").append(`<tr><td>${item.orderId}</td>
@@ -27,7 +27,7 @@ $(function ready() {
         },
         function(data) {
             $("#orders").empty();
-            $("#orders").append("<tr><th>Order Id</th><th>Customer Name</th><th>Phone Number</th><th>Address</th><th>Pizza Details</th></tr>");
+            $("#orders").append("<tr><th>Order Id</th><th>Customer Name</th><th>Phone Number</th><th id='th-address'>Address</th><th id='th-pizza'>Pizza Details</th></tr>");
 
             data.forEach(function (item) {
                 $("#orders").append(`<tr><td>${item.orderId}</td>

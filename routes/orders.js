@@ -6,7 +6,6 @@ const Order = require('../models/orderModel');
 const router = express.Router();
 
 const crustTypes = pizzaData.crustTypes;
-let orderIDCounter = 101;
 
 router.get('/', function(req, res, next) {
     const large = pizzaData.sizes.large.description;
@@ -28,18 +27,14 @@ router.get('/orders', function(req, res, next) {
 });
 
 router.post('/api/orders', (req, res) => {
-    // console.log('Received a body ', req.body);
     const name = req.body.customerInfo.name.trim();
     const phone = req.body.customerInfo.phone.trim().replace(/-/g, '');
-    console.log(req.body.customerInfo.phone);
-    console.log(phone);
     const address = req.body.customerInfo.address.trim();
     const city = req.body.customerInfo.city.trim();
     const postal = req.body.customerInfo.postal.trim();   
     const addressPattern = /\d+\s[\d\w]+\s(.*)/mg;
     const addressResult = addressPattern.test(address);
     let invalidInputMessage = '';
-    // console.log(name, phone, address, city, postal, addressResult);
 
     if (!validator.isAlpha(name.replace(/ /g, ''))) {
         invalidInputMessage = "You entered an invalid name.";
@@ -75,8 +70,8 @@ router.post('/api/orders', (req, res) => {
             res.status(500).json({status: "Error getting the documents count"});
             return;
         }
-        console.log(count);
-        order.orderId = orderIDCounter + count;
+        
+        order.orderId = 101 + count;
         order.pizzaDetails.subtotal = subtotal;
         order.pizzaDetails.tax = tax;
         order.pizzaDetails.total = total;
@@ -104,32 +99,32 @@ router.get('/api/orders', (req, res) => {
         const name = fname.toLowerCase() + ' ' + lname.toLowerCase();    
 
         if(fname !== '' && lname !== '' && phone !== '') {     
-            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + name, 'i') }, "customerInfo.phone": phone });
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + name, 'i') }, "customerInfo.phone": phone }).sort({ orderId: -1 });
 
         } else if(fname !== '' && lname !== '') {     
-            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + name, 'i') } });
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + name, 'i') } }).sort({ orderId: -1 });
 
         } else if(fname !== '' && phone !== '') {        
-            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + fname.toLowerCase(), 'i') }, "customerInfo.phone": phone });
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + fname.toLowerCase(), 'i') }, "customerInfo.phone": phone }).sort({ orderId: -1 });
 
         } else if(lname !== '' && phone !== '') {        
-            query = Order.find({ "customerInfo.name": { $regex: new RegExp(lname.toLowerCase() + '$', 'i') }, "customerInfo.phone": phone });
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp(lname.toLowerCase() + '$', 'i') }, "customerInfo.phone": phone }).sort({ orderId: -1 });
 
         } else if(fname !== '') {    
-            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + fname.toLowerCase(), 'i') }});
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + fname.toLowerCase(), 'i') }}).sort({ orderId: -1 });
 
         } else if(lname !== '') {    
-            query = Order.find({ "customerInfo.name": { $regex: new RegExp(lname.toLowerCase() + '$', 'i') }});
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp(lname.toLowerCase() + '$', 'i') }}).sort({ orderId: -1 });
 
         } else if(phone !== '') {            
-            query = Order.find({ "customerInfo.phone": phone });
+            query = Order.find({ "customerInfo.phone": phone }).sort({ orderId: -1 });
 
         } else {
-            query = Order.find({});
+            query = Order.find({}).sort({ orderId: -1 });
         }        
 
     } else {
-        query = Order.find({});
+        query = Order.find({}).sort({ orderId: -1 });
 
     }    
 
@@ -143,7 +138,6 @@ router.get('/api/orders', (req, res) => {
 
         res.json(orders);
     });
-})
-
+});
 
 module.exports = router;

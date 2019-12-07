@@ -2,7 +2,6 @@ body {
     font-size: 14px;
 }
 
-
 #container {
     padding: 15px 15px 15px 20px;
 }
@@ -28,6 +27,14 @@ form input {
 th {
     background-color:lightblue;
     white-space: nowrap;
+}
+
+#th-address {
+    min-width: 166px;
+}
+
+#th-pizza {
+    min-width: 330px;
 }
 
 td {
