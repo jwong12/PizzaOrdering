@@ -1,8 +1,12 @@
 <link rel="stylesheet" href="stylesheets/orders.css">
 <div id="container">
     <h2>{{title}}</h2><br/>
+    <form method="post" id="search">
+        <input type="text" name="name" id="name" placeholder="Customer name">
+        <input type="text" name="phone" id="phone" placeholder="Phone number">
+        <button type="submit">Search</button>
+    </form><br/>
     <table class="table" id="orders">
-        <tr><th>Order Id</th><th>Customer Name</th><th>Phone Number</th><th>Address</th><th>Pizza Details</th></tr>
     </table>
 </div>
 <script src="javascripts/orders.js"></script>

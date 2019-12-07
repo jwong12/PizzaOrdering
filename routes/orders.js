@@ -85,11 +85,39 @@ router.post('/api/orders', (req, res) => {
 });
 
 router.get('/api/orders', (req, res) => {
-    Order.find({}, (err, orders) => {
+    let query;
+
+    if(req.query.searchQuery !== null && req.query.searchQuery !== undefined) {
+        const searchQueryJS = JSON.parse(req.query.searchQuery);
+        const name = searchQueryJS.name;
+        const phone = searchQueryJS.phone;
+
+        if(name !== '' && phone !== '') {            
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + name.toLowerCase(), 'i') }, "customerInfo.phone": phone });
+
+        } else if(name !== '') {            
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + name.toLowerCase(), 'i') }});
+
+        } else if(phone !== '') {            
+            query = Order.find({ "customerInfo.phone": phone });
+
+        } else {
+            query = Order.find({});
+
+        }        
+
+    } else {
+        query = Order.find({});
+
+    }    
+
+    query.limit(10);
+    query.exec((err, orders) => {
         if(err) {
             res.status(500).json({status: "Error retrieveing orders"});
             return;            
         }
+        console.log(orders);
         res.json(orders);
     });
 })

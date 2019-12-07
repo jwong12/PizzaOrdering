@@ -17,6 +17,7 @@ h2 {
 
 th {
     background-color:lightblue;
+    white-space: nowrap;
 }
 
 td {
