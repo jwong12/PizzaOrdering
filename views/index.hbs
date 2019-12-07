@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="stylesheets/order.css">
+<link rel="stylesheet" href="stylesheets/index.css">
 <script src="javascripts/index.js" defer></script>
 
 <form method="post" id="submitForm">
@@ -52,9 +52,10 @@
         <tr>
             <td><label for="postal">Postal code:</label></td>
             <td><input type="text" id="postal" name="postal" placeholder="V5H 2L4" required minlength="6" maxlength="7"></td>
-        </tr>
+        </tr>        
         <tr>
             <td></td><td><button type="submit">Order</button></td>
-        </tr>
+        </tr>         
     </table>
+    <p id="statusMsg"></p>
 </form>

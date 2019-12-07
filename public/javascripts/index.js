@@ -30,16 +30,15 @@ $(function ready() {
             dataType: 'json',
             data: orderDetails,
             success: function (json, status, request) {
-                // $('#statusMsg').removeClass();
-                // $('#statusMsg').addClass('alert alert-success');
-                // $('#statusMsg').html('Added the course!!!!');
-                console.log('Request succeeded');
-            },
+                $('#statusMsg').removeClass();
+                $('#statusMsg').addClass('alert-success');
+                $('#statusMsg').html('The order was submitted successfully.');
+            },            
             error: function (request, status) {
-                // $('#statusMsg').removeClass();
-                // $('#statusMsg').addClass('alert alert-danger');
-                // $('#statusMsg').html('Error adding the course');
-                console.log('Request failed : ', status);
+                $('#statusMsg').removeClass();
+                $('#statusMsg').addClass('alert-danger');
+                $('#statusMsg').html(request.responseJSON.msg);
+                console.log('Request failed : ', request.responseJSON.status);
             }
         });
     });

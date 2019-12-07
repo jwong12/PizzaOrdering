@@ -63,3 +63,22 @@ button {
     width: 75px;
     height: 28px;
 }
+
+#statusMsg {
+    display: inline-block;
+    margin: 10px 10px 10px 5px;
+    padding: 4px;
+    width: 360px;
+    font-size: 14px;
+    border-radius: 2px;
+}
+
+.alert-success {
+    color: green;
+    border: 1px solid green;
+}
+
+.alert-danger {
+    color: red;
+    border: 1px solid red;
+}

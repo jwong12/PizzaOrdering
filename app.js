@@ -1,12 +1,32 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const exphbs  = require('express-handlebars');
-const ordersRouter = require('./routes/orders');
 
-var app = express();
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/a01025959', {useNewUrlParser: true});
+const db = mongoose.connection;
+
+db.on('error', () => {
+  console.log('Failed to connect to mongodb. Exiting...');
+  process.exit(1);
+});
+
+db.once('open', function() {
+  console.log('Opened mongoDB connection')
+});
+
+process.on('SIGINT', () => {
+  console.log("Stopping the process....");
+  mongoose.connection.close((err) => {
+      console.log("Shutting down.....");
+  });
+});
+
+const ordersRouter = require('./routes/orders');
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

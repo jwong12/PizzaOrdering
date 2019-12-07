@@ -30,4 +30,10 @@ npm i express-handlebars
 npm i lodash
 ```
 
+### Validator.js
+
+```
+npm i validator
+```
+
  

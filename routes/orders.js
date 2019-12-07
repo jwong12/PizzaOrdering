@@ -1,4 +1,5 @@
 const express = require('express');
+const validator = require('validator');
 const pizzaData = require('../pizzadetails.json');
 const PizzaPrice = require('../price-calculator');
 const Order = require('../models/orderModel');
@@ -27,25 +28,71 @@ router.get('/orders', function(req, res, next) {
 });
 
 router.post('/api/orders', (req, res) => {
-    console.log('Received a body ', req.body);
-    let valid = true;
+    // console.log('Received a body ', req.body);
+    const name = req.body.customerInfo.name.trim();
+    const phone = req.body.customerInfo.phone.trim();
+    const address = req.body.customerInfo.address.trim();
+    const city = req.body.customerInfo.city.trim();
+    const postal = req.body.customerInfo.postal.trim();   
+    const addressPattern = /\d+\s[\d\w]+\s(.*)/mg;
+    const addressResult = addressPattern.test(address);
+    let invalidInputMessage = '';
+    // console.log(name, phone, address, city, postal, addressResult);
 
-    if (valid) 
-    {
-        const order = new Order(req.body);
-        const pizzaPrice = new PizzaPrice(order.pizzaDetails.size, order.pizzaDetails.toppings, order.pizzaDetails.quantity);
-        const subtotal = pizzaPrice.calculateSubtotal();
-        const tax = pizzaPrice.calculateTax();
-        const total = parseFloat((subtotal + tax).toFixed(2));
-        const deliveryDelay = Math.floor((Math.random() * 25) + 30);
+    if (!validator.isAlpha(name.replace(/ /g, ''))) {
+        invalidInputMessage = "You entered an invalid name.";
 
-        order.orderId = orderIDCounter++;
-        order.pizzaDetails.subtotal = subtotal;
-        order.pizzaDetails.tax = tax;
-        order.pizzaDetails.total = total;
-        order.pizzaDetails.deliveryTimeInMin = deliveryDelay;
-        console.log(order);
+    } else if (!validator.isMobilePhone(phone.replace(/-/g, ''), 'en-CA')) {
+        invalidInputMessage = "You entered an invalid phone number.";
+
+    } else if (!addressResult){
+        invalidInputMessage = "You entered an invalid address.";
+
+    } else if (!validator.isAlpha(city.replace(/ /g, ''))) {
+        invalidInputMessage = "You entered an invalid city.";
+
+    } else if (!validator.isPostalCode(postal, "CA")) {
+        invalidInputMessage = "You entered an invalid postal code.";
     }
+
+    if (invalidInputMessage !== '') 
+    {
+        return res.status(400).json({status: "Invalid customer information", msg : invalidInputMessage});
+    }
+
+    const order = new Order(req.body);
+    const pizzaPrice = new PizzaPrice(order.pizzaDetails.size, order.pizzaDetails.toppings, order.pizzaDetails.quantity);
+    const subtotal = pizzaPrice.calculateSubtotal();
+    const tax = pizzaPrice.calculateTax();
+    const total = parseFloat((subtotal + tax).toFixed(2));
+    const deliveryDelay = Math.floor((Math.random() * 25) + 30);
+
+    order.orderId = orderIDCounter++;
+    order.pizzaDetails.subtotal = subtotal;
+    order.pizzaDetails.tax = tax;
+    order.pizzaDetails.total = total;
+    order.pizzaDetails.deliveryTimeInMin = deliveryDelay;
+    // console.log(order);
+
+    order.save((err) => {
+        if(err) {
+            res.status(500).json({status: "Error adding the order information"});
+            return;
+        }
+
+        res.json({status: "Added an order"});
+    });
 });
+
+router.get('/api/orders', (req, res) => {
+    Order.find({}, (err, orders) => {
+        if(err) {
+            res.status(500).json({status: "Error retrieveing orders"});
+            return;            
+        }
+        res.json(orders);
+    });
+})
+
 
 module.exports = router;
