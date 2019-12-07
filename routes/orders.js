@@ -30,7 +30,9 @@ router.get('/orders', function(req, res, next) {
 router.post('/api/orders', (req, res) => {
     // console.log('Received a body ', req.body);
     const name = req.body.customerInfo.name.trim();
-    const phone = req.body.customerInfo.phone.trim();
+    const phone = req.body.customerInfo.phone.trim().replace(/-/g, '');
+    console.log(req.body.customerInfo.phone);
+    console.log(phone);
     const address = req.body.customerInfo.address.trim();
     const city = req.body.customerInfo.city.trim();
     const postal = req.body.customerInfo.postal.trim();   
@@ -42,7 +44,7 @@ router.post('/api/orders', (req, res) => {
     if (!validator.isAlpha(name.replace(/ /g, ''))) {
         invalidInputMessage = "You entered an invalid name.";
 
-    } else if (!validator.isMobilePhone(phone.replace(/-/g, ''), 'en-CA')) {
+    } else if (!validator.isMobilePhone(phone, 'en-CA')) {
         invalidInputMessage = "You entered an invalid phone number.";
 
     } else if (!addressResult){
@@ -61,26 +63,33 @@ router.post('/api/orders', (req, res) => {
     }
 
     const order = new Order(req.body);
+    order.customerInfo.phone = phone;
     const pizzaPrice = new PizzaPrice(order.pizzaDetails.size, order.pizzaDetails.toppings, order.pizzaDetails.quantity);
     const subtotal = pizzaPrice.calculateSubtotal();
     const tax = pizzaPrice.calculateTax();
     const total = parseFloat((subtotal + tax).toFixed(2));
     const deliveryDelay = Math.floor((Math.random() * 25) + 30);
 
-    order.orderId = orderIDCounter++;
-    order.pizzaDetails.subtotal = subtotal;
-    order.pizzaDetails.tax = tax;
-    order.pizzaDetails.total = total;
-    order.pizzaDetails.deliveryTimeInMin = deliveryDelay;
-    // console.log(order);
-
-    order.save((err) => {
+    Order.estimatedDocumentCount((err, count) => {
         if(err) {
-            res.status(500).json({status: "Error adding the order information"});
+            res.status(500).json({status: "Error getting the documents count"});
             return;
         }
+        console.log(count);
+        order.orderId = orderIDCounter + count;
+        order.pizzaDetails.subtotal = subtotal;
+        order.pizzaDetails.tax = tax;
+        order.pizzaDetails.total = total;
+        order.pizzaDetails.deliveryTimeInMin = deliveryDelay;
 
-        res.json({status: "Added an order"});
+        order.save((err) => {
+            if(err) {
+                res.status(500).json({status: "Error adding the order information"});
+                return;
+            }
+    
+            res.json({status: "Added an order"});
+        });
     });
 });
 
@@ -89,21 +98,34 @@ router.get('/api/orders', (req, res) => {
 
     if(req.query.searchQuery !== null && req.query.searchQuery !== undefined) {
         const searchQueryJS = JSON.parse(req.query.searchQuery);
-        const name = searchQueryJS.name;
+        const fname = searchQueryJS.fname;
+        const lname = searchQueryJS.lname;
         const phone = searchQueryJS.phone;
+        const name = fname.toLowerCase() + ' ' + lname.toLowerCase();    
 
-        if(name !== '' && phone !== '') {            
-            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + name.toLowerCase(), 'i') }, "customerInfo.phone": phone });
+        if(fname !== '' && lname !== '' && phone !== '') {     
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + name, 'i') }, "customerInfo.phone": phone });
 
-        } else if(name !== '') {            
-            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + name.toLowerCase(), 'i') }});
+        } else if(fname !== '' && lname !== '') {     
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + name, 'i') } });
+
+        } else if(fname !== '' && phone !== '') {        
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + fname.toLowerCase(), 'i') }, "customerInfo.phone": phone });
+
+        } else if(lname !== '' && phone !== '') {        
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp(lname.toLowerCase() + '$', 'i') }, "customerInfo.phone": phone });
+
+        } else if(fname !== '') {    
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp('^' + fname.toLowerCase(), 'i') }});
+
+        } else if(lname !== '') {    
+            query = Order.find({ "customerInfo.name": { $regex: new RegExp(lname.toLowerCase() + '$', 'i') }});
 
         } else if(phone !== '') {            
             query = Order.find({ "customerInfo.phone": phone });
 
         } else {
             query = Order.find({});
-
         }        
 
     } else {
@@ -112,12 +134,13 @@ router.get('/api/orders', (req, res) => {
     }    
 
     query.limit(10);
+
     query.exec((err, orders) => {
         if(err) {
             res.status(500).json({status: "Error retrieveing orders"});
             return;            
         }
-        console.log(orders);
+
         res.json(orders);
     });
 })

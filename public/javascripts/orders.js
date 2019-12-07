@@ -16,7 +16,8 @@ $(function ready() {
         event.preventDefault();
 
         const searchQuery = JSON.stringify({
-            name: $('#name').val(),
+            fname: $('#fname').val(),
+            lname: $('#lname').val(),
             phone: $('#phone').val()
         });
 

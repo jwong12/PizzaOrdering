@@ -1,9 +1,19 @@
-h2 {
-    margin: 0;
+body {
+    font-size: 14px;
 }
+
 
 #container {
     padding: 15px 15px 15px 20px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+form input {
+    width: 95px;
 }
 
 .table {
