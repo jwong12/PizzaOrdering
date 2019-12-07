@@ -5,6 +5,8 @@ $(function ready() {
         $('#address').val('');
         $('#city').val('');
         $('#postal').val('');
+        $('#statusMsg').removeClass(); 
+        $('#statusMsg').empty(); 
     });
 
     $("#submitForm").submit(function (event) {

@@ -8,7 +8,7 @@ $(function ready() {
                                     <td>${item.customerInfo.name}</td>
                                     <td>${item.customerInfo.phone}</td>
                                     <td>${item.customerInfo.address},<br/>${item.customerInfo.city},<br/><span id="postal">BC ${item.customerInfo.postal}</span></td>
-                                    <td id="pizza-details">size: ${item.pizzaDetails.size}<br/>crust: ${item.pizzaDetails.crust}<br/>toppings: ${item.pizzaDetails.toppings.join(', ')}<br/>quantity: ${item.pizzaDetails.quantity}<br/>subtotal: $${item.pizzaDetails.subtotal}<br/>tax: $${item.pizzaDetails.tax}<br/>total: $${item.pizzaDetails.total}<br/>delivery time: ${item.pizzaDetails.deliveryTimeInMin} min</td></tr>`)
+                                    <td id="pizza-details">size: ${item.pizzaDetails.size}<br/>crust: ${item.pizzaDetails.crust}<br/>toppings: ${item.pizzaDetails.toppings.join(', ')}<br/>quantity: ${item.pizzaDetails.quantity}<br/>subtotal: $${item.pizzaDetails.subtotal}<br/>tax: $${item.pizzaDetails.tax}<br/>total: $${item.pizzaDetails.total}<br/>date: $${item.pizzaDetails.date}<br/>delivery time: ${item.pizzaDetails.deliveryTimeInMin} min</td></tr>`)
         });
     });
 
@@ -30,11 +30,14 @@ $(function ready() {
             $("#orders").append("<tr><th>Order Id</th><th>Customer Name</th><th>Phone Number</th><th id='th-address'>Address</th><th id='th-pizza'>Pizza Details</th></tr>");
 
             data.forEach(function (item) {
+                const date = new Date(item.pizzaDetails.date);
+                const formatDate = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours() > 9 ? date.getHours() : '0' + date.getHours()}:${date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()}:${date.getSeconds() > 9 ? date.getSeconds() : '0' + date.getSeconds()}`
+
                 $("#orders").append(`<tr><td>${item.orderId}</td>
                                         <td>${item.customerInfo.name}</td>
                                         <td>${item.customerInfo.phone}</td>
                                         <td>${item.customerInfo.address},<br/>${item.customerInfo.city},<br/><span id="postal">BC ${item.customerInfo.postal}</span></td>
-                                        <td id="pizza-details">size: ${item.pizzaDetails.size}<br/>crust: ${item.pizzaDetails.crust}<br/>toppings: ${item.pizzaDetails.toppings.join(', ')}<br/>quantity: ${item.pizzaDetails.quantity}<br/>subtotal: $${item.pizzaDetails.subtotal}<br/>tax: $${item.pizzaDetails.tax}<br/>total: $${item.pizzaDetails.total}<br/>delivery time: ${item.pizzaDetails.deliveryTimeInMin} min</td></tr>`)
+                                        <td id="pizza-details">size: ${item.pizzaDetails.size}<br/>crust: ${item.pizzaDetails.crust}<br/>toppings: ${item.pizzaDetails.toppings.join(', ')}<br/>quantity: ${item.pizzaDetails.quantity}<br/>subtotal: $${item.pizzaDetails.subtotal}<br/>tax: $${item.pizzaDetails.tax}<br/>total: $${item.pizzaDetails.total}<br/>date ordered: ${formatDate}<br/>delivery time: ${item.pizzaDetails.deliveryTimeInMin} min</td></tr>`)
             });
         });
     });
