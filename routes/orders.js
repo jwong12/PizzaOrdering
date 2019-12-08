@@ -27,6 +27,12 @@ router.get('/orders', function(req, res, next) {
 });
 
 router.post('/api/orders', (req, res) => {
+    if(!req.body.customerInfo || !req.body.customerInfo.name || !req.body.customerInfo.phone || !req.body.customerInfo.address || !req.body.customerInfo.city || !req.body.customerInfo.postal) {
+        return res.status(400).json({
+            msg: "Invalid order information"
+        });
+    }
+
     const name = req.body.customerInfo.name.trim();
     const phone = req.body.customerInfo.phone.trim().replace(/-/g, '');
     const address = req.body.customerInfo.address.trim();
@@ -57,8 +63,10 @@ router.post('/api/orders', (req, res) => {
         return res.status(400).json({status: "Invalid customer information", msg : invalidInputMessage});
     }
 
-    const order = new Order(req.body);
+    const order = new Order(req.body);    
     order.customerInfo.phone = phone;
+    order.customerInfo.postal= postal.charAt(3) !== ' ' ? postal.slice(0, 3) + ' ' + postal.slice(3) : postal;
+    console.log(order.customerInfo.postal);
     const pizzaPrice = new PizzaPrice(order.pizzaDetails.size, order.pizzaDetails.toppings, order.pizzaDetails.quantity);
     const subtotal = pizzaPrice.calculateSubtotal();
     const tax = pizzaPrice.calculateTax();
@@ -91,7 +99,7 @@ router.post('/api/orders', (req, res) => {
 router.get('/api/orders', (req, res) => {
     let query;
 
-    if(req.query.searchQuery !== null && req.query.searchQuery !== undefined) {
+    if(req.query.searchQuery) {
         const searchQueryJS = JSON.parse(req.query.searchQuery);
         const fname = searchQueryJS.fname;
         const lname = searchQueryJS.lname;
