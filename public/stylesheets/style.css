@@ -21,7 +21,7 @@ h1 {
 
 #nav {
   color: #f1f1f1;
-  background-color: rgb(224, 66, 66);
+  background-color: rgb(46, 119, 58);
 }
 
 #navbar{
@@ -32,7 +32,7 @@ h1 {
 
 .navlink:link {
   text-decoration: none;
-  color: rgb(255, 200, 174);
+  color: rgb(214, 201, 106);
 
   padding: 10px;
   font-weight: bold;
@@ -41,7 +41,7 @@ h1 {
 
 .navlink:visited {
   text-decoration: none;
-  color: rgb(255, 200, 174);
+  color: rgb(214, 201, 106);
 }
 
 .navlink:hover {
