@@ -1,10 +1,10 @@
 # Pizza Ordering APIs
 
-A website that let users create pizza orders and retrieve the order history through REST APIs.
+This web application lets users submit their pizza orders and store owners to fetch the most recent orders from the database. This application uses Node.JS and REST API endpoints to perform CRUD operations in a MongoDB database. This project was written using ES6 Javascript features and Handlebars templating engine.
 
 ## Installation
 
-In order to run this node.js project, you will need to install the following modules and templating engine.
+In order to run this project, you will need to install the following modules and templating engine.
 
 ### Express-generator
 
