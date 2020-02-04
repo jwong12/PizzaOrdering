@@ -1,6 +1,6 @@
 # Pizza Ordering APIs
 
-This web application lets users submit their pizza orders and store owners to fetch the most recent orders from the database. This application uses Node.JS and REST API endpoints to perform CRUD operations in a MongoDB database. This project was written using ES6 Javascript features and Handlebars templating engine.
+This web application lets users submit pizza orders and fetch the most recent orders from the database. This application uses Node.JS and REST API endpoints to perform CRUD operations in a MongoDB database. This project was written using ES6 Javascript features and Handlebars templating engine.
 
 ## Installation
 
@@ -36,4 +36,7 @@ npm i lodash
 npm i validator
 ```
 
- 
+### Author
+
+* James Wong
+
