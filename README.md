@@ -1,6 +1,6 @@
-# Pizza Ordering APIs
+# PizzaO
 
-This web application lets users submit pizza orders and fetch the most recent orders from the database. This application uses Node.JS and REST API endpoints to perform CRUD operations in a MongoDB database. This project was written using ES6 Javascript features and Handlebars templating engine.
+A Node.JS web application to submit pizza orders, make customized DB queries about them and fetch recent orders. Accomplished complex schema design and faster queries by using MongoDB over SQL. Enforced the documents’ data types consistency by doing JSON Schema validation with the Mongoose library. Increased the reliability and scalability of the system by implementing REST API endpoints.
 
 ## Installation
 
