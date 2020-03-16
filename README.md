@@ -1,5 +1,5 @@
-# PizzaO
-A Node.JS web application to submit pizza orders, make customized DB queries and fetch recent orders. Accomplished complex schema designs and faster queries by using MongoDB over SQL. Enforced the documents’ data type consistency by doing JSON Schema validation with the Mongoose library. Increased the reliability and scalability of the system by implementing REST API design patterns.
+# Pizza Ordering REST API
+A Node.JS web application to add pizza orders, make dynamic NoSQL queries and fetch recent orders. Used MongoDB over SQL to accomplish complex schema designs and data type consistency. Increased the reliability and scalability of the system by implementing RESTful API design patterns.
 
 ## Installation
 In order to run this project, you will need to install the following modules and templating engine.
