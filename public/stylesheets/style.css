@@ -17,7 +17,7 @@ h1 {
   margin: 0;
   text-align: center;
   padding: 15px 10px 10px 10px;
-  text-shadow: 2px 2px 2px rgb(0,0,0,0.3);
+  text-shadow: 2px 2px 5px rgb(0,0,0,0.2);
 }
 
 #nav {
@@ -48,5 +48,5 @@ h1 {
 
 .navlink:hover {
   color: rgb(255, 160, 92);
-  text-shadow: 1px 1px 3px rgb(0,0,0,0.5);
+  text-shadow: 1px 1px 3px rgb(0,0,0,0.4);
 }
