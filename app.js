@@ -6,7 +6,10 @@ const logger = require('morgan');
 const exphbs  = require('express-handlebars');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/a01025959', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(
+  'mongodb://heroku_sljgg1jv:a4gnndinsacs89abiqc2cfupca@ds147354.mlab.com:47354/heroku_sljgg1jv', 
+  { useNewUrlParser: true, useUnifiedTopology: true }
+);
 const db = mongoose.connection;
 
 db.on('error', () => {
