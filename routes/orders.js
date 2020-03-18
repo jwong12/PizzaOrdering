@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
 });
   
 router.get('/orders', function(req, res, next) {
-    res.render('orders', { title: 'Order Listing' });
+    res.render('orders', { title: 'Order History' });
 });
 
 router.post('/api/orders', (req, res) => {
