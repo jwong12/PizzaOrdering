@@ -6,15 +6,22 @@
 
 <div id="body-content">
     <form method="post" id="submitForm">
-        <h2>Pizza Order</h2>            
         <h3>Choose your size:</h3>
-        <input type="radio" name="size" value="large" id="large" checked="checked"><label for="large">{{large}} - {{largePrice}}</label>
-        <input type="radio" name="size" value="medium" id="medium"><label for="medium">{{medium}} - {{mediumPrice}}</label>
-        <input type="radio" name="size" value="small" id="small"><label for="small">{{small}} - {{smallPrice}}</label>
-        <input type="radio" name="size" value="personal" id="personal"><label for="personal">{{personal}} - {{personalPrice}}</label>
+        <div class="sizes-radio">
+            <input type="radio" name="size" value="large" id="large" checked="checked"><label for="large">{{large}} - {{largePrice}}</label>
+        </div>
+        <div class="sizes-radio">
+            <input type="radio" name="size" value="medium" id="medium"><label for="medium">{{medium}} - {{mediumPrice}}</label>
+        </div>
+        <div class="sizes-radio">
+            <input type="radio" name="size" value="small" id="small"><label for="small">{{small}} - {{smallPrice}}</label>
+        </div>
+        <div class="sizes-radio" id="sizes-personal">
+            <input type="radio" name="size" value="personal" id="personal"><label for="personal">{{personal}} - {{personalPrice}}</label>
+        </div><br/><br/>
 
         <h3>Choose your crust:</h3>
-        {{#listCrusts crustTypes}}{{name}} &#127829; {{description}}<br>{{/listCrusts}}
+        {{#listCrusts crustTypes}}{{name}} &#127829; {{description}}<br>{{/listCrusts}}<br/>
 
         <h3>Choose your toppings:</h3>
         <ul class="toppings_list">
@@ -33,34 +40,36 @@
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-        </select><br/>
-        <h3>Customer Information</h3>
-        <table>                
-            <tr>
-                <td><label for="name">Name:</label></td>
-                <td><input type="text" id="name" name="name" required minlength="2"></td>
-            </tr>
-            
-            <tr>
-                <td><label for="phone">Phone number:</label></td>
-                <td><input type="text" id="phone" name="phone" placeholder="604-123-5555" required minlength="10" maxlength="12"></td>
-            </tr>
-            <tr>
-                <td><label for="address">Address:</label></td>
-                <td><input type="text" id="address" name="address" placeholder="110-500 Main St" required></td>
-            </tr>
-            <tr>
-                <td><label for="city">City:</label></td>
-                <td><input type="text" id="city" name="city" required></td>
-            </tr>
-            <tr>
-                <td><label for="postal">Postal code:</label></td>
-                <td><input type="text" id="postal" name="postal" placeholder="V5H 2L4" required minlength="6" maxlength="7"></td>
-            </tr>        
-            <tr>
-                <td></td><td><button type="submit">Order</button><button type="button" id="clearForm">Clear</button></td> 
-            </tr>         
-        </table>
-        <p id="statusMsg"></p>
+        </select><br/><br/>
+        <div id="customer-div">
+            <h3>Customer Information</h3>
+            <table>                
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name" name="name" required minlength="2"></td>
+                </tr>
+                
+                <tr>
+                    <td><label for="phone">Phone number:</label></td>
+                    <td><input type="text" id="phone" name="phone" placeholder="604-123-5555" required minlength="10" maxlength="12"></td>
+                </tr>
+                <tr>
+                    <td><label for="address">Address:</label></td>
+                    <td><input type="text" id="address" name="address" placeholder="110-500 Main St" required></td>
+                </tr>
+                <tr>
+                    <td><label for="city">City:</label></td>
+                    <td><input type="text" id="city" name="city" required></td>
+                </tr>
+                <tr>
+                    <td><label for="postal">Postal code:</label></td>
+                    <td><input type="text" id="postal" name="postal" placeholder="V5H 2L4" required minlength="6" maxlength="7"></td>
+                </tr>        
+                <tr>
+                    <td></td><td><button type="submit">Order</button><button type="button" id="clearForm">Clear</button></td> 
+                </tr>         
+            </table>
+            <p id="statusMsg"></p>
+        </div>
     </form>
 </div>

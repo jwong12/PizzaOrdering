@@ -1,23 +1,19 @@
 #body-content {
     margin: auto;
-    min-width: 725px;
     max-width: 850px;
     border-left: 1px solid gray;
     border-right: 1px solid gray;
     border-bottom: 1px solid gray;
+    border-radius: 0 0 5px 5px;
 }
 
 h1{
     font-size: 28px;
 }
 
-h2 {
-    margin: 0;
-    text-shadow: 1px 1px 1px rgb(0,0,0,0.1);
-}
-
 h3 {
-    margin: 20px 0 10px 0;
+    margin: 3px 0 10px;
+    font-size: 16px;
 }
 
 form {
@@ -25,8 +21,9 @@ form {
     color: #252525;
 }
 
-#medium, #small, #personal {
-    margin: 0 0 0 20px;
+.sizes-radio {
+    display:inline-block;
+    margin: 0 5px 5px 0;
 }
 
 .crust {
@@ -48,6 +45,20 @@ form {
     margin: 0;
 }
 
+#customer-div{
+    margin: auto;
+    min-width: 377px;
+    width: 45%;
+    padding: 8px;
+    border: 1px solid #c5c5c5;
+    border-radius: 8px;
+}
+
+#customer-div h3 {
+    margin-top: 3px;
+    text-align: center;
+}
+
 label {
     font-size: 14px;
     padding: 5px;
@@ -55,6 +66,7 @@ label {
 
 table {
     border-spacing: 1px;
+    margin-bottom: 8px;
 }
 
 td input {
@@ -63,9 +75,8 @@ td input {
 
 #labelQty {
     font-weight: bold;
-    font-size: 18.72px;
     padding: 0;
-    margin-right: 24px;
+    margin-right: 20px;
 }
 
 #dropDownQty {
@@ -80,10 +91,8 @@ button {
 }
 
 #statusMsg {
-    display: inline-block;
-    margin: 10px 10px 10px 5px;
-    padding: 4px;
-    width: 360px;
+    margin: 0;
+    padding: 3px;
     font-size: 14px;
     border-radius: 2px;
 }
@@ -94,6 +103,22 @@ button {
 }
 
 .alert-danger {
-    color: red;
-    border: 1px solid red;
+    color: #f32121;
+    border: 1px solid #f32121;
+}
+
+@media only screen and (max-width: 580px) {
+    #customer-div{
+        margin-left: 8%;
+    }
+}
+
+@media only screen and (max-width: 525px) {
+    #sizes-personal {
+        margin-left: 9px;
+    }
+
+    #customer-div{
+        margin-left: 4%;
+    }
 }
