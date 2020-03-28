@@ -1,3 +1,12 @@
+#body-content {
+    margin: auto;
+    min-width: 725px;
+    max-width: 850px;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
 h1{
     font-size: 28px;
 }

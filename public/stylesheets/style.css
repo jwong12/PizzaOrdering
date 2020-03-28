@@ -6,11 +6,7 @@ body{
 
 #main-content {
   background-color: #ffffff;
-  min-width: 725px;
-  max-width: 850px;
   min-height: 100vh;
-  margin: auto;
-  border: 1px solid gray;
 }
 
 h1 {
@@ -23,6 +19,7 @@ h1 {
 #nav {
   color: #ffffff;
   background-color: rgb(199, 91, 91);
+  border-bottom: 1px solid gray;
 }
 
 #navbar{
