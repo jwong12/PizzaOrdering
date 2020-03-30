@@ -107,12 +107,6 @@ button {
     border: 1px solid #f32121;
 }
 
-@media only screen and (max-width: 580px) {
-    #customer-div{
-        margin-left: 8%;
-    }
-}
-
 @media only screen and (max-width: 525px) {
     #sizes-personal {
         margin-left: 9px;
@@ -121,6 +115,7 @@ button {
 
 @media only screen and (max-width: 475px) {
     #customer-div {
-        margin: 0;
+        margin-left: 0;
     }
 }
+
