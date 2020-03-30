@@ -1,4 +1,10 @@
 /node_modules
 npm-debug.log
 .DS_Store
+<<<<<<< HEAD
 /*.env
+=======
+/*.env
+docker-compose.yml
+Dockerfile
+>>>>>>> d347c4f6d4af735166b71d643d6898264cac1776
