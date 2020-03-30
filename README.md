@@ -3,6 +3,12 @@ A Node.JS web application to add pizza orders, make dynamic NoSQL queries and fe
 
 ## Installation
 In order to run this project, you will need to install the following modules and templating engine.
+```
+npm install
+```
+
+## Express Local Port
+localhost:3000
 
 ### Express-generator
 ```

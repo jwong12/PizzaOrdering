@@ -17,7 +17,7 @@ h1 {
 }
 
 #nav {
-  color: #ffffff;
+  color: #841c1c;
   background-color: rgb(199, 91, 91);
   border-bottom: 1px solid gray;
 }
@@ -30,7 +30,7 @@ h1 {
 
 .navlink:link {
   text-decoration: none;
-  color: rgb(111, 71, 43);
+  color: rgb(255, 209, 177);
   text-shadow: 1px 1px 1px rgb(256,256,256,0.1);
   padding: 10px;
   font-weight: bold;
@@ -39,11 +39,11 @@ h1 {
 
 .navlink:visited {
   text-decoration: none;
-  color: rgb(111, 71, 43);
+  color: rgb(255, 209, 177);
   text-shadow: 1px 1px 1px rgb(256,256,256,0.1);
 }
 
 .navlink:hover {
   color: rgb(255, 160, 92);
-  text-shadow: 1px 1px 3px rgb(0,0,0,0.4);
+  text-shadow: 1px 1px 5px rgb(0,0,0,0.2);
 }

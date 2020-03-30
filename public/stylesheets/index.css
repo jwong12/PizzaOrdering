@@ -47,7 +47,7 @@ form {
 
 #customer-div{
     margin: auto;
-    min-width: 377px;
+    min-width: 390px;
     width: 45%;
     padding: 8px;
     border: 1px solid #c5c5c5;
@@ -117,8 +117,10 @@ button {
     #sizes-personal {
         margin-left: 9px;
     }
+}
 
-    #customer-div{
-        margin-left: 4%;
+@media only screen and (max-width: 475px) {
+    #customer-div {
+        margin: 0;
     }
 }

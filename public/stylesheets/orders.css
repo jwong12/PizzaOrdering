@@ -37,6 +37,10 @@ th {
     white-space: nowrap;
 }
 
+#th-name {
+    min-width: 140px;
+}
+
 #th-address {
     min-width: 166px;
 }
