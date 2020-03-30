@@ -2,6 +2,5 @@
 npm-debug.log
 .DS_Store
 /*.env
-Procfile
 docker-compose.yml
 Dockerfile
