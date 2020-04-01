@@ -12,7 +12,7 @@ body{
 h1 {
   margin: 0;
   text-align: center;
-  padding: 15px 10px 10px 10px;
+  padding: 15px 10px 5px 10px;
   text-shadow: 2px 2px 5px rgb(0,0,0,0.2);
 }
 
@@ -31,19 +31,18 @@ h1 {
 .navlink:link {
   text-decoration: none;
   color: rgb(255, 209, 177);
-  text-shadow: 1px 1px 1px rgb(256,256,256,0.1);
+  text-shadow: 1px 1px 1px rgb(0,0,0,0.3);
   padding: 10px;
-  font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .navlink:visited {
   text-decoration: none;
   color: rgb(255, 209, 177);
-  text-shadow: 1px 1px 1px rgb(256,256,256,0.1);
+  text-shadow: 1px 1px 1px rgb(0,0,0,0.3);
 }
 
 .navlink:hover {
   color: rgb(255, 160, 92);
-  text-shadow: 1px 1px 5px rgb(0,0,0,0.2);
+  text-shadow: 1px 1px 2px rgb(0,0,0,0.4);
 }

@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+    nodejs:
+        build: .
+        image: jwong12/pizza-nodejs
+        container_name: nodejs-web
+        restart: unless-stopped
+        volumes:
+            - node_modules:/home/node/app/node_modules
+        networks:
+            - backend-network
+        ports:
+            - "8080:3000"
+
+    mongo-db:
+        image: mongo
+        container_name: mongodb
+        volumes:
+            - mongo-data:/app/data
+        networks:
+            - backend-network
+        restart: unless-stopped
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: example
+
+networks:
+    backend-network:
+        driver: bridge
+
+volumes:
+    mongo-data: {}
+    node_modules: {}
+    
